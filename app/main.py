@@ -28,10 +28,11 @@ app.include_router(users.router)
 app.include_router(wods.router)
 app.include_router(memberships.router)
 
-# Servir la interfaz móvil desde la ruta /app
-os.makedirs("frontend", exist_ok=True)
-app.mount("/app", StaticFiles(directory="frontend", html=True), name="frontend")
+# Servir la interfaz móvil desde la ruta /app (corregido a "Frontend" con F mayúscula)
+os.makedirs("Frontend", exist_ok=True)
+app.mount("/app", StaticFiles(directory="Frontend", html=True), name="frontend")
 
 @app.get("/")
 def read_root():
+    return {"mensaje": "API activa. Entra a /app para ver la interfaz móvil."}
     return {"mensaje": "API activa. Entra a /app para ver la interfaz móvil."}
